@@ -13,7 +13,7 @@ class HomeController extends Controller
     {
         try {
             $client = new Client();
-            $response = $client->get('http://handsport.test/api/barang');
+            $response = $client->get('http://localhost:8000/api/barang');
             $data = json_decode($response->getBody(), true);
 
             return view('frontend.homepage', ['barang' => $data['barang']]);
