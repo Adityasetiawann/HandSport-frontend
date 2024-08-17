@@ -27,7 +27,7 @@ class CartController extends Controller
         try {
             // Kirim request ke API menggunakan Guzzle
             $response = Http::withToken($token)
-                ->post('http://localhost:8000/api/Keranjang', [
+                ->post(API_ENDPOINT . 'api/Keranjang', [
                     'barang_id' => $validatedData['barang_id'],
                     'quantity' => $validatedData['quantity'],
                     'ukuran' => $validatedData['ukuran'],

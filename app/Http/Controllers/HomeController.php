@@ -8,12 +8,12 @@ use GuzzleHttp\Exception\RequestException;
 
 class HomeController extends Controller
 {
-   
+
     public function index()
     {
         try {
             $client = new Client();
-            $response = $client->get('http://localhost:8000/api/barang');
+            $response = $client->get(API_ENDPOINT . 'api/barang');
             $data = json_decode($response->getBody(), true);
 
             return view('frontend.homepage', ['barang' => $data['barang']]);
@@ -22,6 +22,4 @@ class HomeController extends Controller
             return view('frontend.homepage', ['barang' => []]);
         }
     }
-
-
 }

@@ -10,6 +10,7 @@ use App\Http\Controllers\SepatuController;
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\SnapController;
 
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
@@ -71,5 +72,7 @@ Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembaya
 // // Route::post('/cart/add', [KeranjangController::class, 'add'])->name('cart.add')->name('cart.add')->middleware('auth');
 // Route::get('/keranjang', [KeranjangController::class, 'index'])->name('cart.index');
 
-
+Route::get('/snap', 'SnapController@snap');
+Route::get('/snaptoken', [SnapController::class, 'token'])->name('snaptoken');
+Route::post('/snapfinish', [SnapController::class, 'finish'])->name('snapfinish');
 

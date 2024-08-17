@@ -13,7 +13,7 @@ class ShopController extends Controller
     {
         try {
             $client = new Client();
-            $response = $client->get('http://localhost:8000/api/barang', [
+            $response = $client->get(API_ENDPOINT . 'api/barang', [
                 'query' => ['kategori' => 'Jersey']
             ]);
 
@@ -33,7 +33,7 @@ class ShopController extends Controller
     // {
     //     try {
     //         $client = new Client();
-    //         $response = $client->get('http://localhost:8000/api/barang?kategori=jersey');
+    //         $response = $client->get(API_ENDPOINT . 'api/barang?kategori=jersey');
     //         $data = json_decode($response->getBody(), true);
 
     //         return view('frontend.shop.index', ['barang' => $data['barang']]);
@@ -48,7 +48,7 @@ class ShopController extends Controller
     // public function index()
     // {
     //     $client = new Client();
-    //     $response = $client->get('http://localhost:8000/api/barang');
+    //     $response = $client->get(API_ENDPOINT . 'api/barang');
     //     $data = json_decode($response->getBody(), true);
 
     //     return view('frontend.shop.index', ['barang' => $data['barang']]);

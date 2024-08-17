@@ -19,6 +19,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        define('API_ENDPOINT', 'http://handsport-api.test/');
     }
 }

@@ -10,7 +10,7 @@ class SepatuController extends Controller
     public function getSepatu()
     {
         $client = new Client();
-        $response = $client->get('http://127.0.0.1:8000/api/barang/kategori/sepatu');
+        $response = $client->get(API_ENDPOINT . 'api/barang/kategori/sepatu');
         $barang = json_decode($response->getBody()->getContents(), true);
 
         return view('menu.sepatu', ['barang' => $barang['barang']]);

@@ -27,7 +27,7 @@ class PesanController extends Controller
         $authToken = Session::get('access_token');
     
         try {
-            $response = $client->post('http://localhost:8000/api/Keranjang', [
+            $response = $client->post(API_ENDPOINT . 'api/Keranjang', [
                 'headers' => [
                     'Authorization' => 'Bearer ' . $authToken, // Token autentikasi dari sesi
                     'Accept' => 'application/json',
@@ -58,7 +58,7 @@ class PesanController extends Controller
         $token = Session::get('access_token'); // Ambil token dari sesi
 
         try {
-            $response = $client->post('http://localhost:8000/api/store-pesanan', [
+            $response = $client->post(API_ENDPOINT . 'api/store-pesanan', [
                 'headers' => [
                     'Authorization' => 'Bearer ' . $token,
                     'Accept' => 'application/json',
@@ -103,7 +103,7 @@ class PesanController extends Controller
     //     $validatedData['user_id'] = Auth::id();
 
     //     $client = new Client();
-    //     $response = $client->post('http://localhost:8000/api/pesanan-details', [
+    //     $response = $client->post(API_ENDPOINT . 'api/pesanan-details', [
     //         'form_params' => $validatedData
     //     ]);
 
@@ -132,7 +132,7 @@ class PesanController extends Controller
     // {
     //     try {
     //         $client = new Client();
-    //         $response = $client->post('http://localhost:8000/api/pesanan_detail', [
+    //         $response = $client->post(API_ENDPOINT . 'api/pesanan_detail', [
     //             'headers' => [
     //                 'Authorization' => 'Bearer ' . Session::get('access_token'),
     //                 'Accept' => 'application/json',
@@ -161,7 +161,7 @@ class PesanController extends Controller
     public function show($id)
     {
         $client = new Client();
-        $response = $client->get('http://localhost:8000/api/barang/' . $id);
+        $response = $client->get(API_ENDPOINT . 'api/barang/' . $id);
 
         if ($response->getStatusCode() == 200) {
             $data = json_decode($response->getBody(), true);
@@ -185,7 +185,7 @@ class PesanController extends Controller
     
     //     try {
     //         $client = new Client();
-    //         $response = $client->post('http://localhost:8000/api/keranjang', [ // Pastikan endpoint yang benar
+    //         $response = $client->post(API_ENDPOINT . 'api/keranjang', [ // Pastikan endpoint yang benar
     //             'headers' => [
     //                 'Authorization' => 'Bearer ' . $token,
     //                 'Accept' => 'application/json',
@@ -215,7 +215,7 @@ class PesanController extends Controller
     // public function update(Request $request, $id)
     // {
     //     $client = new Client();
-    //     $response = $client->get('http://localhost:8000/api/barang/' . $id);
+    //     $response = $client->get(API_ENDPOINT . 'api/barang/' . $id);
 
     //     if ($response->getStatusCode() == 200) {
     //         $barang = json_decode($response->getBody(), true)['barang'];

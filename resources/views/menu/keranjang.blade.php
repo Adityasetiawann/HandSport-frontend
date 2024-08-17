@@ -14,7 +14,7 @@
                                 <th>Quantity</th>
                                 <th>Ukuran</th>
                                 <th>Total</th>
-                                {{-- <th>Action</th> --}}
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -24,7 +24,7 @@
                                         <td class="shoping__cart__item">
                                             <!-- Gambar dengan style CSS untuk ukuran maksimal dan pusatkan -->
                                             <div style="display: flex; justify-content: left; align-items: center;">
-                                                <img src="{{ url('http://localhost:8000/storage/gambar/' . $item['barang']['gambar']) }}" alt="{{ $item['barang']['nama_barang'] }}"
+                                                <img src="{{ asset('frontend/img/foto-produk/' . $item['barang']['gambar']) }}" alt="{{ $item['barang']['nama_barang'] }}"
                                                     style="max-width: 100px; max-height: 200px; object-fit: cover; display: block;">
                                             </div>
                                         </td>
@@ -40,6 +40,10 @@
                                         <td class="shoping__cart__total">
                                             Rp {{ number_format($item['total'], 0, ',', '.') }}
                                         </td>
+                                        <td class="shoping__cart__action">
+                                            <!-- Optionally add a remove button or any other action -->
+                                            <a href="#" class="btn btn-danger btn-sm">Hapus</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             @else
@@ -54,14 +58,19 @@
         </div>
         <div class="row mt-4">
             <div class="col-lg-12 text-right">
-                <form action="{{ route('storePesanan') }}" method="POST">
+                <button type="button" id="pay-button" class="primary-btn cart-btn cart-btn-right">
+                    Pesan
+                </button>
+                <!-- <form action="{{ route('storePesanan') }}" method="POST">
                     @csrf
-                    <button type="submit" class="primary-btn cart-btn cart-btn-right">
-                        Pesan
-                    </button>
-                </form>
+                </form> -->
             </div>
         </div>
+        <form id="payment-form" method="POST" action="snapfinish">
+            <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+            <input type="hidden" name="result_type" id="result-type" value="">
+            <input type="hidden" name="result_data" id="result-data" value="">
+        </form>
     </div>
 </section>
 @endsection

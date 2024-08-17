@@ -17,7 +17,7 @@ class KeranjangController extends Controller
         $authToken = Session::get('access_token');
     
         try {
-            $response = $client->get('http://localhost:8000/api/pesananDetail', [
+            $response = $client->get(API_ENDPOINT . 'api/pesananDetail', [
                 'headers' => [
                     'Authorization' => 'Bearer ' . $authToken,
                     'Accept' => 'application/json',
@@ -66,7 +66,7 @@ class KeranjangController extends Controller
     // {
     //     try {
     //         $client = new Client();
-    //         $response = $client->post('http://localhost:8000/api/keranjang', [
+    //         $response = $client->post(API_ENDPOINT . 'api/keranjang', [
     //             'headers' => [
     //             'Authorization' => 'Bearer ' . Session::get('access_token'),
                 
@@ -97,7 +97,7 @@ class KeranjangController extends Controller
 
     //     try {
     //         $client = new Client();
-    //         $response = $client->post('http://localhost:8000/api/Keranjang', [
+    //         $response = $client->post(API_ENDPOINT . 'api/Keranjang', [
     //             'headers' => [
     //                 'Authorization' => 'Bearer ' . $accessToken,
     //             ],

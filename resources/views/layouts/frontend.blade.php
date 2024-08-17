@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('frontend/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}" type="text/css">
+    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-KgvXdOZ48iFIQB2s"></script>
 </head>
 
 <body>
@@ -40,37 +41,37 @@
                 <li><a href="{{ route('keranjang') }}"><i class="fa fa-shopping-bag"></i> </a></li>
             </ul>
             {{-- <div class="header__cart__price"> --}}
-                
-                <div class="header__top__right__auth">
-                    @if(Session::has('access_token'))
-                        <a href="#">
-                            <i class="fa fa-user"></i> {{ Session::get('user_name') }}
-                        </a>
-                    @else
-                        <a href="{{ route('login') }}">
-                            <i class="fa fa-user"></i> Login
-                        </a>
-                    @endif
-                </div>
-                </div>
+
+            <div class="header__top__right__auth">
+                @if(Session::has('access_token'))
+                <a href="#">
+                    <i class="fa fa-user"></i> {{ Session::get('user_name') }}
+                </a>
+                @else
+                <a href="{{ route('login') }}">
+                    <i class="fa fa-user"></i> Login
+                </a>
+                @endif
+            </div>
+        </div>
 
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
                 <li class="active"><a href="{{ route('shop.index') }}">Home</a></li>
                 <li><a href="{{ route('shop.index') }}">Halaman</a>
-                <ul class="header__menu__dropdown">
-                    <li><a href="{{ route('keranjang') }}">Keranjang</a></li>
-                    <li><a href="{{ route('jersey') }}">Jersey</a></li>
-                    <li><a href="{{ route('celana') }}">Celana</a></li>
-                    <li><a href="{{ route('sepatu') }}">Sepatu</a></li>
-                </ul>
+                    <ul class="header__menu__dropdown">
+                        <li><a href="{{ route('keranjang') }}">Keranjang</a></li>
+                        <li><a href="{{ route('jersey') }}">Jersey</a></li>
+                        <li><a href="{{ route('celana') }}">Celana</a></li>
+                        <li><a href="{{ route('sepatu') }}">Sepatu</a></li>
+                    </ul>
                 <li style="margin-top: 15px;">
                     <!-- Tombol Logout -->
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
-                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
-                       style="
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                        style="
                            display: block;
                            text-align: center;
                            padding: 10px;
@@ -85,7 +86,7 @@
                         Logout
                     </a>
                 </li>
-               
+
         </nav>
         <div id="mobile-menu-wrap"></div>
         <div class="header__top__right__social">
@@ -105,7 +106,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__left">
                             <ul>
-                              
+
                             </ul>
                         </div>
                     </div>
@@ -117,34 +118,34 @@
                             </div>
                             <div class="header__top__right__auth" style="display: flex; align-items: center;">
                                 @if(Session::has('access_token'))
-                                    <div class="header__user__auth" style="display: flex; align-items: center; position: relative;">
-                                        <!-- Username with styling -->
-                                        <a class="user-name" onclick="toggleDropdown(event)" style="display: flex; align-items: center; padding: 10px 15px; background-color: #343434; color: white; border-radius: 25px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s; margin-right: 10px; cursor: pointer;">
-                                            <i class="fa fa-user" style="margin-right: 5px;"></i> 
-                                            {{ Session::get('user_name') }}
-                                        </a>
-                                        <!-- Dropdown menu -->
-                                        <div id="dropdownMenu" style="display: none; position: absolute; top: 45px; right: 0; background-color: #343434; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); z-index: 1;">
-                                            <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
-                                                @csrf
-                                                <button type="submit" style="background: #5e5e5e; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s; width: 100%;">Logout</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                @else
-                                    <!-- Login button styling -->
-                                    <a href="{{ route('login') }}" style="display: flex; align-items: center; padding: 10px 15px; background-color: #4CAF50; color: white; border-radius: 25px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s;">
-                                        <i class="fa fa-user" style="margin-right: 5px;"></i> Login
+                                <div class="header__user__auth" style="display: flex; align-items: center; position: relative;">
+                                    <!-- Username with styling -->
+                                    <a class="user-name" onclick="toggleDropdown(event)" style="display: flex; align-items: center; padding: 10px 15px; background-color: #343434; color: white; border-radius: 25px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s; margin-right: 10px; cursor: pointer;">
+                                        <i class="fa fa-user" style="margin-right: 5px;"></i>
+                                        {{ Session::get('user_name') }}
                                     </a>
+                                    <!-- Dropdown menu -->
+                                    <div id="dropdownMenu" style="display: none; position: absolute; top: 45px; right: 0; background-color: #343434; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); z-index: 1;">
+                                        <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
+                                            @csrf
+                                            <button type="submit" style="background: #5e5e5e; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s; width: 100%;">Logout</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                @else
+                                <!-- Login button styling -->
+                                <a href="{{ route('login') }}" style="display: flex; align-items: center; padding: 10px 15px; background-color: #4CAF50; color: white; border-radius: 25px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s;">
+                                    <i class="fa fa-user" style="margin-right: 5px;"></i> Login
+                                </a>
                                 @endif
-    
-                        </div>
-                    </div>
-                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        </div>
         </div>
 
         <script>
@@ -153,7 +154,7 @@
                 var dropdownMenu = document.getElementById('dropdownMenu');
                 dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
             }
-        
+
             window.onclick = function(event) {
                 var dropdowns = document.getElementsByClassName("dropdown-menu");
                 for (var i = 0; i < dropdowns.length; i++) {
@@ -164,7 +165,7 @@
                 }
             }
         </script>
-        
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -179,10 +180,10 @@
                             <li><a href="{{ route('jersey') }}">Jersey</a></li>
                             <li><a href="{{ route('celana') }}">Celana</a></li>
                             <li><a href="{{ route('sepatu') }}">Sepatu</a></li>
-                       
-                                    
-                                </ul>
-                            </li>
+
+
+                        </ul>
+                        </li>
                         </ul>
                     </nav>
                 </div>
@@ -208,18 +209,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
-                    <div> 
+                    <div>
                     </div>
                 </div>
-                    <div class="col-lg-9">
-                        <div class="hero__search">
-                            <div class="hero__search__form">
-                                <form action="{{ route('search.product') }}" method="GET">
-                                    <input type="text" name="nama_barang" placeholder="What do you need?">
-                                    <button type="submit" class="site-btn">SEARCH</button>
-                                </form>
-                            </div>
+                <div class="col-lg-9">
+                    <div class="hero__search">
+                        <div class="hero__search__form">
+                            <form action="{{ route('search.product') }}" method="GET">
+                                <input type="text" name="nama_barang" placeholder="What do you need?">
+                                <button type="submit" class="site-btn">SEARCH</button>
+                            </form>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -227,8 +228,8 @@
     <!-- Hero Section End -->
     @yield('content')
 
-      <!-- Footer Section Begin -->
-      <footer class="footer spad">
+    <!-- Footer Section Begin -->
+    <footer class="footer spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -253,10 +254,15 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="footer__copyright">
-                        <div class="footer__copyright__text"><p>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
+                        <div class="footer__copyright__text">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;<script>
+                                    document.write(new Date().getFullYear());
+                                </script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
                         <div class="footer__copyright__payment"><img src="{{ asset('frontend/img/payment-item.png') }}" alt=""></div>
                     </div>
                 </div>
@@ -274,9 +280,56 @@
     <script src="{{ asset('frontend/js/mixitup.min.js') }}"></script>
     <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('frontend/js/main.js') }}"></script>
+    <script type="text/javascript">
+        $('#pay-button').click(function(event) {
+            event.preventDefault();
+            $(this).attr("disabled", "disabled");
+
+            $.ajax({
+
+                url: './snaptoken',
+                cache: false,
+
+                success: function(data) {
+
+                    console.log('token = ' + data);
+
+                    var resultType = document.getElementById('result-type');
+                    var resultData = document.getElementById('result-data');
+
+                    function changeResult(type, data) {
+                        $("#result-type").val(type);
+                        $("#result-data").val(JSON.stringify(data));
+                    }
+
+                    snap.pay(data, {
+
+                        onSuccess: function(result) {
+                            changeResult('success', result);
+                            console.log(result.status_message);
+                            $("#payment-form").submit();
+                        },
+                        onPending: function(result) {
+                            changeResult('pending', result);
+                            console.log(result.status_message);
+                            $("#payment-form").submit();
+                        },
+                        onError: function(result) {
+                            changeResult('error', result);
+                            console.log(result.status_message);
+                            $("#payment-form").submit();
+                        }
+                    });
+                },
+                error: function(data) {
+                    console.log(data.message);
+                }
+            });
+        });
+    </script>
 
 
 
 </body>
 
-</html> 
+</html>

@@ -10,7 +10,7 @@ class BarangController extends Controller
     public function show($id)
     {
         $client = new Client();
-        $response = $client->get('http://localhost:8000/api/barang/' . $id);
+        $response = $client->get(API_ENDPOINT . 'api/barang/' . $id);
 
         if ($response->getStatusCode() == 200) {
             $barang = json_decode($response->getBody(), true)['barang'];
@@ -29,7 +29,7 @@ class BarangController extends Controller
 
     try {
         // Send a GET request to the API with the product name
-        $response = $client->get('http://localhost:8000/api/barang/nama/' . $namaBarang);
+        $response = $client->get(API_ENDPOINT . 'api/barang/nama/' . $namaBarang);
 
         if ($response->getStatusCode() == 200) {
             // Decode the response and get the product details

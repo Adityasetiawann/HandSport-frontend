@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class AuthController extends Controller
 
         try {
             $client = new Client();
-            $response = $client->post('http://localhost:8000/api/register', [
+            $response = $client->post(API_ENDPOINT . 'api/register', [
                 'json' => [
                     'username' => $request->username,
                     'email' => $request->email,
@@ -44,39 +45,39 @@ class AuthController extends Controller
     {
         return view('auth.login');
     }
-    
-    
+
+
     public function login(Request $request)
     {
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|string',
         ]);
-    
+
         try {
             $client = new Client();
-            $response = $client->post('http://localhost:8000/api/login', [
+            $response = $client->post(API_ENDPOINT . 'api/login', [
                 'json' => [
                     'email' => $request->email,
                     'password' => $request->password,
                 ],
             ]);
-    
+
             if ($response->getStatusCode() == 200) {
                 $data = json_decode($response->getBody(), true);
-                Session::put('access_token', $data['access_token']); 
-    
-                
+                Session::put('access_token', $data['access_token']);
+
+
                 $client = new Client();
-                $response = $client->get('http://localhost:8000/api/user', [
+                $response = $client->get(API_ENDPOINT . 'api/user', [
                     'headers' => [
-                        'Authorization' => 'Bearer ' . $data['access_token'], 
+                        'Authorization' => 'Bearer ' . $data['access_token'],
                     ],
                 ]);
-    
+
                 $userData = json_decode($response->getBody(), true);
-                Session::put('user_name', $userData['username']); 
-    
+                Session::put('user_name', $userData['username']);
+
                 if ($userData['role'] == 'user') {
                     return redirect('/shop');
                 } else {
@@ -98,7 +99,7 @@ class AuthController extends Controller
     {
         try {
             $client = new Client();
-            $response = $client->post('http://localhost:8000/api/logout', [
+            $response = $client->post(API_ENDPOINT . 'api/logout', [
                 'headers' => [
                     'Authorization' => 'Bearer ' . Session::get('access_token'),
                 ],

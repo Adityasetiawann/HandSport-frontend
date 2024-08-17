@@ -10,7 +10,7 @@
                 <div class="product__details__pic">
                     <div class="product__details__pic__item" style="max-width: 100%; max-height: 100%; display: flex; justify-content: center;">
                         <img class="product__details__pic__item--large"
-                            src="{{ url('http://localhost:8000/storage/gambar/' . $barang['gambar']) }}"
+                            src="{{ asset('frontend/img/foto-produk/' . $barang['gambar']) }}"
                             alt="{{ $barang['nama_barang'] }}" style="width: 100%; height: auto; max-width: 400px;">
                     </div>
                 </div>

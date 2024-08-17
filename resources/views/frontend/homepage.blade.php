@@ -23,7 +23,7 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood">
                             <div class="featured__item">
                                 <a href="{{ route('detail', ['id' => $item['id']]) }}">
-                                    <div class="featured__item__pic" style="background-image: url('http://localhost:8000/storage/gambar/{{ $item['gambar'] }}'); background-size: cover; background-position: center; height: 300px;">
+                                    <div class="featured__item__pic" style="background-image: url('{{ asset('frontend/img/foto-produk/' . $item['gambar']) }}'); background-size: cover; background-position: center; height: 300px;">
                                         <div class="featured__item__pic__hover">
                                          
                                             <a href="{{ route('login') }}" style="background-color: white; color: black; padding: 5px 15px; display: inline-block; border-radius: 20px;">Detail</a>
